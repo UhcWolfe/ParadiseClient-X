@@ -42,8 +42,8 @@ public class DiscordRPCManager implements ReadyCallback {
         user.userId)).build();
     try {
       DiscordRPC.discordInitialize("1164104022265974784", handlers, true);
-    } catch (Exception e) {
-      Constants.LOGGER.error("[DiscordRPC] Failed to initialize Discord RPC: ", e);
+    } catch (Throwable t) {
+      Constants.LOGGER.error("[DiscordRPC] Failed to initialize Discord RPC (likely already loaded or missing native library): ", t);
       enabled = false;
     }
   }
